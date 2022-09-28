@@ -9,13 +9,18 @@
 }
 
 .FileInput {
-  width: 0.1px; 
+  /* width: 0.1px; 
   height: 0.1px; 
   opacity: 0; 
   overflow: hidden; 
   position: absolute; 
-  z-index: -1;
+  z-index: -1; */
   visibility: hidden;
+}
+
+.FileDisplay {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .Icon {
@@ -25,6 +30,13 @@
   background-color: gray;
   display: inline-block;
   text-align: center;
+}
+
+.Button {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .Icon:hover {
