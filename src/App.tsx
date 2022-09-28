@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import './App.css';
 import { Box } from '@mui/material';
 import Input from '@mui/material/Input';
@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 
 function App() {
   const [file, setFile] = useState<File>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   let uploadHandler = () => {
     console.log("State:" + file);
@@ -24,17 +25,24 @@ function App() {
 
   return (
     <div className="App">
-      <Box component="form">
-        <div className='FileInput'>
-          <Input id='FileInput' type='file' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            console.log(e.target.files);
-            if(e.target != null) {
-              setFile(e.target.files![0]);
-            }
-          }} />
-          <Button onClick={uploadHandler}>Upload</Button>
-        </div>
-      </Box>
+      <div className='mainBar'>
+        <Box component="form">
+          <div className='FileInput'>
+            <input id='file' type='file' name='file' ref={inputRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              console.log(e.target.files);
+              if(e.target != null) {
+                setFile(e.target.files![0]);
+              }
+            }} />
+          </div>
+          <div className='Icon'>
+            <label htmlFor='file'>Open File</label>
+          </div>
+          <div className='ManuButtons'>
+            <Button onClick={uploadHandler}>Upload</Button>
+          </div>
+        </Box>
+      </div>
     </div>
   );
 }

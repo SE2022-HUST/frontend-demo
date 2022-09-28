@@ -8,6 +8,29 @@
   width: 100%;
 }
 
+.FileInput {
+  width: 0.1px; 
+  height: 0.1px; 
+  opacity: 0; 
+  overflow: hidden; 
+  position: absolute; 
+  z-index: -1;
+  visibility: hidden;
+}
+
+.Icon {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: gray;
+  display: inline-block;
+  text-align: center;
+}
+
+.Icon:hover {
+  background-color: red;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
