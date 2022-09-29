@@ -8,20 +8,6 @@
   width: 100%;
 }
 
-.FileInput {
-  /* width: 0.1px; 
-  height: 0.1px; 
-  opacity: 0; 
-  overflow: hidden; 
-  position: absolute; 
-  z-index: -1; */
-  visibility: hidden;
-}
-
-.FileDisplay {
-  padding-left: 5px;
-  padding-right: 5px;
-}
 
 .Icon {
   font-size: 1.25em;
