@@ -8,11 +8,21 @@ import { uploadAddr } from './Apis/Constants';
 
 function App() {
   const [file, setFile] = useState<File>();
+  const [loading, setLoading] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  let response: Response | undefined;
   const uploadHandler = () => {
     console.log(file);
-    response = uploadFunc(uploadAddr, file);
+    setLoading(true);
+    uploadFunc(uploadAddr, file).then(result => {
+      setLoading(false);
+      setFile(undefined);
+      if(result) {
+        window.alert("上传成功");
+      }
+      else {
+        window.alert("上传失败")
+      }
+    });
   }
   const openHandler = () => {
     if(inputRef.current != null) {
@@ -28,7 +38,7 @@ function App() {
       <div className='mainBar'>
         <Box component="form">
           <FileInput action={(file: File) => setFile(file)} ref={inputRef} />
-          <ControlPanel file={file} openHandler={()=>openHandler()} uploadHandler={()=>uploadHandler()} clearHandler={()=>clearHandler()} />
+          <ControlPanel file={file} loading={loading} openHandler={()=>openHandler()} uploadHandler={()=>uploadHandler()} clearHandler={()=>clearHandler()} />
         </Box>
       </div>
 

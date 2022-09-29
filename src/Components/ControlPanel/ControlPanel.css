@@ -3,4 +3,9 @@
     padding-right: 5px;
     margin-left: 3px;
     margin-right: 3px;
-  }
+}
+
+.Button:disabled {
+  cursor: not-allowed;
+  pointer-events: auto;
+}
