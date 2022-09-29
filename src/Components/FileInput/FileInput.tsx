@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react';
+import './FileInput.css'
 
 interface IFIProps {
     action: (file: File) => void;
@@ -9,16 +10,19 @@ interface IFIProps {
 
 const FileInput = React.forwardRef<HTMLInputElement, IFIProps>((props: IFIProps, ref) => {
     let setFile = props.action;
-    return (<input hidden id='file' type='file' name='file' ref={ref} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                console.log(e.target.files);
-                if(e.target != null) {
-                    setFile(e.target.files![0]);
-                    // console.log(e.target.files![0]);
-                    // console.log(file);
-                    // if(displayRef.current != null)
-                    // displayRef.current.innerText = e.target.files![0].name;
-                }
+    return (
+        <div className='FileInput'>
+            <input hidden id='file' type='file' name='file' ref={ref} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        console.log(e.target.files);
+                        if(e.target != null) {
+                            setFile(e.target.files![0]);
+                            // console.log(e.target.files![0]);
+                            // console.log(file);
+                            // if(displayRef.current != null)
+                            // displayRef.current.innerText = e.target.files![0].name;
+                        }
             }} />
+        </div>
     )
 })
 

@@ -10,11 +10,11 @@ import './App.css';
 import uploadFunc from './Apis/Upload';
 import { uploadAddr } from './Apis/Constants';
 import FileInput from './Components/FileInput/FileInput';
+import DisplayBox from './Components/DisplayBox/DisplayBox';
 
 function App() {
   const [file, setFile] = useState<File>();
   const inputRef = useRef<HTMLInputElement>(null);
-  const displayRef = useRef<HTMLInputElement>(null);
   let response: Response | undefined;
 
   let uploadHandler = () => {
@@ -26,16 +26,9 @@ function App() {
     <div className="App">
       <div className='mainBar'>
         <Box component="form">
-          <div className='FileInput'>
-            <FileInput action={(file: File) => setFile(file)} ref={inputRef} />
-          </div>
-          {/* <div className='Icon'>
-            <label htmlFor='file'>Open File</label>
-          </div> */}
+          <FileInput action={(file: File) => setFile(file)} ref={inputRef} />
           <div className='ManuButtons'>
-            <span className="FileDisplay">
-              <Input placeholder='Please choose a file~' readOnly ref={displayRef} value={file === undefined ? 'No File' : file.name} />
-            </span>
+            <DisplayBox file={file} />
             <span className='Button'>
               <Button variant='contained' onClick={() => {
                 if(inputRef.current != null) {
