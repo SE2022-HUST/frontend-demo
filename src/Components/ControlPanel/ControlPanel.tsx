@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Delete } from '@mui/icons-material';
 import './ControlPanel.css'
+import { Tooltip } from '@mui/material';
 
 interface IProps {
     file: File | undefined;
@@ -24,11 +25,13 @@ function ControlPanel(props: IProps) {
         <div className='ManuButtons'>
             <DisplayBox file={file} />
             <span className='Button'>
-                <Button variant='contained' onClick={openHandler}>Open</Button>
+                <Button variant='contained' onClick={openHandler}>打开</Button>
             </span>
-            <span className='Button'>
-                <LoadingButton className='Button' variant='contained' onClick={uploadHandler} disabled={file === undefined} loading={loadingStatus}>Upload</LoadingButton>
-            </span>
+            <Tooltip title="请在上传前先打开一个文件">
+                <span className='Button'>
+                    <LoadingButton className='Button' variant='contained' onClick={uploadHandler} disabled={file === undefined} loading={loadingStatus}>上传</LoadingButton>
+                </span>
+            </Tooltip>
             <span className='DelButton'>
                 <IconButton aria-label='delete' color='primary' onClick={clearHandler}>
                     <Delete/>
