@@ -1,29 +1,24 @@
 import React, {useState, useRef} from 'react';
-import './App.css';
 import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { Delete } from '@mui/icons-material';
 import Input from '@mui/material/Input';
 
+import './App.css';
+
+import uploadFunc from './Apis/Upload';
+import { uploadAddr } from './Apis/Constants';
+
 function App() {
   const [file, setFile] = useState<File>();
   const inputRef = useRef<HTMLInputElement>(null);
   const displayRef = useRef<HTMLInputElement>(null);
+  let response: Response | undefined;
 
   let uploadHandler = () => {
-    console.log("State:" + file);
-    if(file !== undefined) {
-      const data = new FormData();
-      data.append('file', file);
-      let promise = fetch('http://localhost:5000/upload', {
-        method: 'POST',
-        body: data
-      }).then(response => console.log(response))  
-    }
-    else {
-      console.error("No valid file loaded!");
-    }
+    console.log(file);
+    response = uploadFunc(uploadAddr, file);
   }
 
   return (
@@ -35,6 +30,8 @@ function App() {
               console.log(e.target.files);
               if(e.target != null) {
                 setFile(e.target.files![0]);
+                // console.log(e.target.files![0]);
+                // console.log(file);
                 // if(displayRef.current != null)
                 // displayRef.current.innerText = e.target.files![0].name;
               }
