@@ -9,6 +9,7 @@ import './App.css';
 
 import uploadFunc from './Apis/Upload';
 import { uploadAddr } from './Apis/Constants';
+import FileInput from './Components/FileInput/FileInput';
 
 function App() {
   const [file, setFile] = useState<File>();
@@ -26,16 +27,7 @@ function App() {
       <div className='mainBar'>
         <Box component="form">
           <div className='FileInput'>
-            <input hidden id='file' type='file' name='file' ref={inputRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              console.log(e.target.files);
-              if(e.target != null) {
-                setFile(e.target.files![0]);
-                // console.log(e.target.files![0]);
-                // console.log(file);
-                // if(displayRef.current != null)
-                // displayRef.current.innerText = e.target.files![0].name;
-              }
-            }} />
+            <FileInput action={(file: File) => setFile(file)} ref={inputRef} />
           </div>
           {/* <div className='Icon'>
             <label htmlFor='file'>Open File</label>
