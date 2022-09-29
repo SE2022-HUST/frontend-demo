@@ -7,25 +7,3 @@
   height: 100%;
   width: 100%;
 }
-
-
-.Icon {
-  font-size: 1.25em;
-  font-weight: 700;
-  color: white;
-  background-color: gray;
-  display: inline-block;
-  text-align: center;
-}
-
-.Icon:hover {
-  background-color: red;
-}
-
-.Button {
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
