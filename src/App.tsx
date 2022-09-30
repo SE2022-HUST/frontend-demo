@@ -39,14 +39,13 @@ function App() {
 
   return (
     <div className="App">
-      <AlertBar status={toastStatus} updateStatus={setByResult(0)} />
+      <AlertBar status={toastStatus} updateStatus={setByResult} />
       <div className='MainBar'>
         <Box component="form">
           <FileInput action={(file: File) => setFile(file)} ref={inputRef} />
           <ControlPanel file={file} loading={loading} openHandler={() => openHandler()} uploadHandler={() => uploadHandler()} clearHandler={() => clearHandler()} />
         </Box>
       </div>
-
     </div>
   );
 }
